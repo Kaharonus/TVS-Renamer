@@ -9,8 +9,8 @@ using System.Windows;
 using System.Windows.Forms;
 
 namespace TVSRenamer {
-    class Renamer {
-        public static void RenameBatch(List<string> locations, string finalLoc , Show show) {
+  /*  class Renamer {
+        public static void RenameBatch(List<string> locations, string finalLoc , TVShow show) {
             show.aliases.AddRange(API.GetAliases(show));
             locations.Insert(0, finalLoc);
             if (!show.name.Equals(Path.GetFileName(finalLoc), StringComparison.InvariantCultureIgnoreCase)) {
@@ -151,5 +151,5 @@ namespace TVSRenamer {
         }
 
 
-    }
+    }*/
 }

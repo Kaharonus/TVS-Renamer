@@ -11,54 +11,26 @@ using System.Windows;
 
 namespace TVSRenamer {
      public class API {
-        public static List<Show> getShows(string name) {
-            List<Show> list = new List<Show>();
+        public static List<TVShow> getShows(string name) {
+            List<TVShow> list = new List<TVShow>();
             name = name.Replace(" ", "+");
-            WebRequest wr = WebRequest.Create("http://api.tvmaze.com/search/shows?q=" + name);
-             HttpWebResponse response = null;
+            WebClient wc = new WebClient();
+            wc.Headers.Add("user-agent", "TVS-Renamer");
+            string responseFromServer = null;
             try {
-                response = (HttpWebResponse)wr.GetResponse();
+                responseFromServer = wc.DownloadString("http://api.tvmaze.com/search/shows?q=" + name);
+                
             } catch (Exception) {
                 return list;
             }
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            string responseFromServer = reader.ReadToEnd();
-            //JObject jo = JObject.Parse(responseFromServer);
             JArray test = JArray.Parse(responseFromServer);
             foreach (JToken jt in (JToken)test) { 
                 JToken value = jt["show"];
-                Show s = new Show();
-                if (value["externals"]["thetvdb"].ToString() != "") {
-                    s.tvdbID = Int32.Parse(value["externals"]["thetvdb"].ToString());                
-                    s.id = Int32.Parse(value["id"].ToString());
-                    s.name = value["name"].ToString();
-                    if(value["rating"]["average"].ToString() != "") {
-                        s.rating = float.Parse(value["rating"]["average"].ToString());
-                    } else {
-                        s.rating = 0;
-                    }
-                    s.imdb = "www.imdb.com/title/" + value["externals"]["imdb"].ToString() + "/?ref_=nv_sr_1";              
-                    if (value["image"].ToString() != "") { 
-                        s.image = value["image"]["original"].ToString();
-                    }
-                    if (value["network"].ToString() != "") {
-                        s.station = value["network"]["name"].ToString();
-                    }
-                    if (value["summary"].ToString() != "") {
-                        s.overview = value["summary"].ToString();
-                    }
-                    foreach (JToken genres in value["genres"]) {
-                        s.genres.Add(genres.ToString());
-                    }
-                    try {
-                        s.releaseDate = DateTime.ParseExact(value["premiered"].ToString(), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).ToString("dd.MM.yyyy");
-                    } catch (Exception) {
-                        s.releaseDate = "";
-                    }               
-                    list.Add(s);
-                }
+                list.Add(value.ToObject<TVShow>());
+               
             }
+            list = list.OrderBy(x => x.weight).ToList();
+            list.Reverse();
             return list;
         }
         private static string getToken() {
@@ -85,9 +57,9 @@ namespace TVSRenamer {
                 MessageBox.Show("Connection error!\n"+ e.Message); return null;
             }
         }
-        public static List<string> GetAliases(Show s) {
+        public static List<string> GetAliases(TVShow s) {
             List<string> aliases = new List<string>();
-            Regex reg = new Regex(@"\([0-9]{4}\)");
+            /*Regex reg = new Regex(@"\([0-9]{4}\)");
             Regex reg2 = new Regex(@"\.");
             aliases.Add(s.name);
             string temp = s.name;
@@ -112,7 +84,7 @@ namespace TVSRenamer {
                 if (aliases[i].Contains(" ")) {
                     aliases.Add(aliases[i].Replace(" ", "."));
                 }
-            }
+            }*/
             return aliases;
         }
         private static JToken getAliasToken(int id) {
@@ -135,7 +107,7 @@ namespace TVSRenamer {
             request.Headers.Add("Authorization", "Bearer " + API.getToken());
             return request;
         }
-        public static List<Episode> RequestEpisodes(Show s) {
+        public static List<Episode> RequestEpisodes(TVShow s) {
             List<Episode> list = new List<Episode>();
             WebRequest wr = WebRequest.Create("http://api.tvmaze.com/shows/"+ s.id+"/episodes");
             HttpWebResponse response = null;
@@ -158,18 +130,53 @@ namespace TVSRenamer {
             return list;
         }
     }
-    public class Show {
-        public string name;
-        public string releaseDate;
-        public int id;
-        public float rating;
-        public string imdb;
-        public int tvdbID;
-        public string image;
-        public string station;
-        public string overview;
-        public List<string> genres = new List<string>();
-        public List<string> aliases = new List<string>();
+    public class TVShow {
+        public int id { get; set; }
+        public string url { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
+        public string language { get; set; }
+        public List<string> genres { get; set; }
+        public string status { get; set; }
+        public int? runtime { get; set; }
+        public string premiered { get; set; }
+        public string officialSite { get; set; }
+        public Schedule schedule { get; set; }
+        public Rating rating { get; set; }
+        public int? weight { get; set; }
+        public Network network { get; set; }
+        public object webChannel { get; set; }
+        public Externals externals { get; set; }
+        public Image image { get; set; }
+        public string summary { get; set; }
+        public int? updated { get; set; }
+        public class Rating {
+            public double? average { get; set; }
+        }
+        public class Country {
+            public string name { get; set; }
+            public string code { get; set; }
+            public string timezone { get; set; }
+        }
+        public class Network {
+            public int? id { get; set; }
+            public string name { get; set; }
+            public Country country { get; set; }
+        }
+        public class Externals {
+            public int? tvrage { get; set; }
+            public int? thetvdb { get; set; }
+            public string imdb { get; set; }
+        }
+        public class Image {
+            public string medium { get; set; }
+            public string original { get; set; }
+        }
+        public class Schedule {
+            public string time { get; set; }
+            public List<object> days { get; set; }
+        }
+
     }
     public class Episode {
         public string name;

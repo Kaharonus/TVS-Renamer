@@ -24,11 +24,11 @@ namespace TVSRenamer {
     /// Interaction logic for Locations.xaml
     /// </summary>
     public partial class Locations : Page {
-        public Locations(Show show) {
+        public Locations(TVShow show) {
             InitializeComponent();
             this.show = show;
         }
-        Show show;
+        TVShow show;
         private void GitHub_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
             Process.Start("https://github.com/Kaharonus/TVS-Renamer");
         }
@@ -63,7 +63,7 @@ namespace TVSRenamer {
                 l.Add(Loc2.Text);
                 l.Add(Loc3.Text);
                 Action a = null;
-                a = () => Renamer.RenameBatch(l, text, show);                            
+                //a = () => Renamer.RenameBatch(l, text, show);                            
                 IAsyncResult ar = a.BeginInvoke(Callback, null);               
             } else {
                 System.Windows.MessageBox.Show("One of the paths you entered doesn't exist");

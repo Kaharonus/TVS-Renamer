@@ -20,14 +20,14 @@ namespace TVSRenamer {
     /// Interaction logic for Details.xaml
     /// </summary>
     public partial class Details : Page {
-        public Details(Show s) {
+        public Details(TVShow s) {
             InitializeComponent();
             show = s;
         }
-        Show show;
+        TVShow show;
 
         private void Grid_Loaded(object sender, RoutedEventArgs e) {
-            ShowName.Text = show.name;
+        /*    ShowName.Text = show.name;
             rating.Text = show.rating + "/10";
             date.Text = show.releaseDate;
             station.Text = show.station;
@@ -41,7 +41,7 @@ namespace TVSRenamer {
             }
         }
         private void OpenIMDb(string url) {
-            Process.Start(url);
+            Process.Start(url);*/
         }
 
         private string RemoveStyle(string line) {

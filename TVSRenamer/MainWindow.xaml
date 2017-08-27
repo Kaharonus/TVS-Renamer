@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TVSRenamer"
         mc:Ignorable="d"
         Title="TVS Renamer" Height="576" Width="1024" Background="#FF222222"
-        MinWidth="580" MinHeight="335">
+        MinWidth="580" MinHeight="480">
     <Grid x:Name="BaseGrid">
         <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Loaded="MainFrame_Loaded"></Frame>
     </Grid>
