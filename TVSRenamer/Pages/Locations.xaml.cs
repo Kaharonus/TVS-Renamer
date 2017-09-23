@@ -29,24 +29,9 @@ namespace TVSRenamer {
             this.show = show;
         }
         TVShow show;
-        private void GitHub_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
-            Process.Start("https://github.com/Kaharonus/TVS-Renamer");
-        }
 
-        private void Info_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
-            Page p = new Info();
-            Window main = Window.GetWindow(this);
-            ((MainWindow)main).AddTempFrame(p);
-        }
-
-        private void Back_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
-            Page p = new SelectShow();
-            Window main = Window.GetWindow(this);
-            ((MainWindow)main).SetFrame(p);
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e) {
-            ShowName.Text = show.name;
+        /*private void Grid_Loaded(object sender, RoutedEventArgs e) {
+            //ShowName.Text = show.name;
             Loc1.Text = Properties.Settings.Default.Lokace1;
             Loc2.Text = Properties.Settings.Default.Lokace2;
             Loc3.Text = Properties.Settings.Default.Lokace3;
@@ -64,7 +49,7 @@ namespace TVSRenamer {
                 l.Add(Loc3.Text);
                 Action a = null;
                 //a = () => Renamer.RenameBatch(l, text, show);                            
-                IAsyncResult ar = a.BeginInvoke(Callback, null);               
+                IAsyncResult ar = a.BeginInvoke(Callback, null);
             } else {
                 System.Windows.MessageBox.Show("One of the paths you entered doesn't exist");
                 HideWaiting();
@@ -80,7 +65,7 @@ namespace TVSRenamer {
                 Properties.Settings.Default.Lokace3 = Loc3.Text;
                 Properties.Settings.Default.Save();
                 return true;
-            } else { return false; }           
+            } else { return false; }
         }
 
         private void SelectLocation_MouseUp(object sender, MouseButtonEventArgs e) {
@@ -152,5 +137,10 @@ namespace TVSRenamer {
             }
 
         }
+
+
+    */
+
+
     }
 }

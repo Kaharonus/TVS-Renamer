@@ -68,12 +68,6 @@
     </ApplicationDefinition>
     <Compile Include="Classes\DownloadFromApi.cs" />
     <Compile Include="Classes\Renamer.cs" />
-    <Compile Include="Pages\Details.xaml.cs">
-      <DependentUpon>Details.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Info.xaml.cs">
-      <DependentUpon>Info.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Locations.xaml.cs">
       <DependentUpon>Locations.xaml</DependentUpon>
     </Compile>
@@ -83,14 +77,6 @@
     <Compile Include="Pages\SearchResult.xaml.cs">
       <DependentUpon>SearchResult.xaml</DependentUpon>
     </Compile>
-    <Page Include="Pages\Details.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Info.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\Locations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\televisions.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

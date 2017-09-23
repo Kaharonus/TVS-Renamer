@@ -7,7 +7,43 @@
         mc:Ignorable="d"
         Title="TVS Renamer" Height="576" Width="1024" Background="#FF222222"
         MinWidth="580" MinHeight="480">
+
+    <Window.Resources>
+        <Storyboard x:Key="MoveUp">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,10,0,0" AccelerationRatio="0.5" DecelerationRatio="0.5" Duration="0:0:0:0.5"></ThicknessAnimation>
+        </Storyboard>
+        <Storyboard x:Key="MoveUpLogo">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,10,0,0" AccelerationRatio="0.5" DecelerationRatio="0.5" Duration="0:0:0:0.2"></ThicknessAnimation>
+        </Storyboard>
+        <Storyboard x:Key="OpacityUp">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0:0.1"></DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="OpacityUpSlow">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0:0.3" To="1" Duration="0:0:0:0.4" ></DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="OpacityDown">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0:0.1"></DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
     <Grid x:Name="BaseGrid">
-        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Loaded="MainFrame_Loaded"></Frame>
+        <Grid x:Name="SearchBarGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" x:Name="LeftColumn"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*" x:Name="RightColumn" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="Logo" Text="FUTURE CONTENT" Foreground="White" Grid.Column="1" HorizontalAlignment="Center" Margin="0,200,0,0" FontSize="75" />
+            <TextBox x:Name="TextBox" GotFocus="TextBox_GotFocus" Background="White" MinWidth="30" Margin="0,375,0,0" BorderThickness="0" VerticalAlignment="Top" FontSize="16" Text="Search" Height="27"  Grid.Column="1" />
+        </Grid>
+        <Grid>
+            <Grid x:Name="MenuIcon" VerticalAlignment="Top" Opacity="0" HorizontalAlignment="Right" Width="27" Height="27" Margin="10,10">
+                <Image Source="Icons/menu.png" />
+            </Grid>
+            <Grid x:Name="GitHubIcon" VerticalAlignment="Top" Opacity="0" HorizontalAlignment="Right" MouseUp="GitHubIcon_MouseUp" Width="27" Height="27" Margin="42,10">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Icons/github-logo.png" />
+            </Grid>
+
+            <Frame x:Name="MainFrame" Margin="10,45,10,10" NavigationUIVisibility="Hidden" Loaded="MainFrame_Loaded" ></Frame>
+        </Grid>
     </Grid>
 </Window>

@@ -20,67 +20,68 @@
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="Background" Value="#333333"></Setter>
-                    </Trigger>
-                    <Trigger Property="IsMouseOver" Value="False">
+                   </Trigger>
+                   <Trigger Property="IsMouseOver" Value="False">
                         <Setter Property="Background" Value="#222222"></Setter>
                     </Trigger>
                 </Style.Triggers>
-            </Style>
-        </Grid.Style>
-        <TextBlock x:Name="MainText" Margin="5,0,100,0" VerticalAlignment="Center" Foreground="White" Text="wefwef" FontSize="18"/>
-        <Grid Margin="45,10" VerticalAlignment="Center" Height="22" x:Name="Details" HorizontalAlignment="Right" MouseLeftButtonUp="Details_MouseEnter">
-            <Image RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" Source="../Icons/info.png"/>
-        </Grid>
-        <Grid Margin="8,10" VerticalAlignment="Center" Height="22" x:Name="Selected" HorizontalAlignment="Right">
-            <Image RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" Source="../Icons/success.png"/>
-        </Grid>
-        <Grid x:Name="DetailsGrid" VerticalAlignment="Bottom" Height="400" Margin="0,-400" Background="#333333" Visibility="Hidden">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="280"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Image x:Name="Poster" RenderOptions.BitmapScalingMode="HighQuality" Height="370" Width="250" HorizontalAlignment="Left" Margin="15,15,0,15" />
-            <Grid Grid.Column="1" Margin="0,10">
+                </Style>
+            </Grid.Style>
+        <Grid Width="5" HorizontalAlignment="Left" Background="#333333"></Grid>
+        <TextBlock x:Name="MainText" Margin="10,0,100,0" VerticalAlignment="Center" Foreground="White" Text="wefwef" FontSize="18"/>
+            <Grid Margin="45,10" VerticalAlignment="Center" Height="22" x:Name="Details" HorizontalAlignment="Right" MouseLeftButtonUp="Details_MouseEnter">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" Source="../Icons/info.png"/>
+            </Grid>
+            <Grid Margin="8,10" VerticalAlignment="Center" Height="22" x:Name="Selected" HorizontalAlignment="Right">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" Source="../Icons/success.png"/>
+            </Grid>
+            <Grid x:Name="DetailsGrid" VerticalAlignment="Bottom" Height="400" Margin="0,-400" Background="#333333" Visibility="Hidden">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="showName" TextDecorations="Underline" Text="SampleShowName" FontSize="22" Foreground="White" Grid.ColumnSpan="3" />
-                <TextBlock x:Name="genres"  Margin="0,30" FontSize="18" Foreground="White" Grid.ColumnSpan="3" />
-                <TextBlock x:Name="rating" Text="9.3/10" Margin="10,0" HorizontalAlignment="Right" FontSize="18" Foreground="White" Grid.ColumnSpan="3" />
+                <Image x:Name="Poster" RenderOptions.BitmapScalingMode="HighQuality" Height="370" Width="250" HorizontalAlignment="Left" Margin="15,15,0,15" />
+                <Grid Grid.Column="1" Margin="0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="showName" TextDecorations="Underline" Text="SampleShowName" MouseEnter="showName_MouseEnter" MouseLeave="showName_MouseLeave" FontSize="22" Foreground="White" Grid.ColumnSpan="3" />
+                    <TextBlock x:Name="genres"  Margin="0,30" FontSize="18" Foreground="White" Grid.ColumnSpan="3" />
+                    <TextBlock x:Name="rating" Text="9.3/10" Margin="10,0" HorizontalAlignment="Right" FontSize="18" Foreground="White" Grid.ColumnSpan="3" />
 
-                <StackPanel >
-                    <TextBlock  Text="Schedule:" Margin="0,75,0,0" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock  Text="Network:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock  Text="Timezone:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock  Text="Status:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock  Text="Premiered:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock  Text="Episode Length:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock  Text="Language:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock  Text="Type:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock  Text="Official site:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                    <StackPanel >
+                        <TextBlock  Text="Schedule:" Margin="0,75,0,0" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock  Text="Network:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock  Text="Timezone:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock  Text="Status:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock  Text="Premiered:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock  Text="Episode Length:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock  Text="Language:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock  Text="Type:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock  Text="Official site:" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
 
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <TextBlock x:Name="schedule" Margin="0,75,0,0" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock x:Name="network" Text="HBO" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock x:Name="timezone" Text="Amercia/New York" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock x:Name="schedule" Margin="0,75,0,0" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="network" Text="HBO" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="timezone" Text="Amercia/New York" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
 
-                    <TextBlock x:Name="stat" Text="Running" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock x:Name="prem" Text="12.01.0354" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock x:Name="len" Text="60 minutes" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock x:Name="lang" Text="ENG" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock x:Name="type" Text="Scripted" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock x:Name="offsite" Text="Link" TextDecorations="Underline" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="stat" Text="Running" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="prem" Text="12.01.0354" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="len" Text="60 minutes" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="lang" Text="ENG" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="type" Text="Scripted" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="offsite" Text="Link" MouseEnter="showName_MouseEnter" MouseLeave="showName_MouseLeave" TextDecorations="Underline" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
 
-                </StackPanel>
-                <Grid Grid.Column="2">
-                    <TextBlock  Text="Summary:" Margin="0,75,0,0" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
-                    <TextBlock x:Name="summary" TextWrapping="Wrap" Text="Summary:" Margin="0,94,15,0" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                    </StackPanel>
+                    <Grid Grid.Column="2">
+                        <TextBlock  Text="Summary:" Margin="0,75,0,0" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
+                        <TextBlock x:Name="summary" TextWrapping="Wrap" Text="Summary:" Margin="0,94,15,0" FontSize="14" Foreground="White" Grid.ColumnSpan="2" />
 
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
-    </Grid>
 </UserControl>

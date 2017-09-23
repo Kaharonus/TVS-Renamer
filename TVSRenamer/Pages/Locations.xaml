@@ -4,34 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TVSRenamer"
-      mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="576"
+      mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="576" x:Name="LocationsSettings"
       Title="Locations" >
     <Page.Resources>
-        <Storyboard x:Key="ShowBottom" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,-53" To="0,0,0,-3" DecelerationRatio=".5" Duration="0:0:0.25" />
-        </Storyboard>
-        <Storyboard x:Key="HideBottom">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,-3" To="0,0,0,-53" AccelerationRatio=".5" Duration="0:0:0.15" />
-        </Storyboard>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30px"/>
-            <RowDefinition Height="30* "/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Grid Background="#E53935" Grid.Row="0">
-            <Grid Margin="5" x:Name="Back" HorizontalAlignment="Left" MouseLeftButtonUp="Back_MouseLeftButtonUp">
-                <Image Source="../Icons/back.png"></Image>
-            </Grid>
-            <TextBlock x:Name="ShowName" Text="" Foreground="White" FontSize="18" Margin="40,2,0,2" HorizontalAlignment="Left" Width="974" />
-            <Grid Margin="3" x:Name="Info" HorizontalAlignment="Right" MouseLeftButtonUp="Info_MouseLeftButtonUp">
-                <Image Source="../Icons/info.png"></Image>
-            </Grid>
-            <Grid Margin="35,3" x:Name="GitHub" HorizontalAlignment="Right" MouseLeftButtonUp="GitHub_MouseLeftButtonUp">
-                <Image Source="../Icons/github-logo.png"></Image>
-            </Grid>
+        <Grid>
         </Grid>
-        <Grid Grid.Row="1" Loaded="Grid_Loaded">
+        <!--<Grid Grid.Row="1" Loaded="Grid_Loaded">
             <TextBlock Margin="11,5,100,0" Height="25" VerticalAlignment="Top" Foreground="White" FontSize="16" Text="Location of TV Show:" />
             <TextBox Background="#333333" x:Name="TextBox" BorderThickness="0" Margin="10,30,80,0" Height="25" VerticalAlignment="Top" Foreground="White" FontSize="16"></TextBox>
             <Grid Height="25" HorizontalAlignment="Right" Width="60" VerticalAlignment="Top" Margin="10,30" x:Name="SelectLocation" MouseUp="SelectLocation_MouseUp">
@@ -83,6 +67,7 @@
             <Border Background="#B71C1C" CornerRadius="3">
                 <TextBlock FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White">Working</TextBlock>
             </Border>
-        </Grid>
+        </Grid>-->
+        <TextBlock Text="TO BE ADDED" FontSize="100" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" />
     </Grid>
 </Page>

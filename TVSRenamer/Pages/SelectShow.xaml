@@ -7,19 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="576" d:DesignWidth="1024" x:Name="SelectShowPage">
     <Page.Resources>
-        <Storyboard x:Key="MoveUp">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,10,0,0" AccelerationRatio="0.5" DecelerationRatio="0.5" Duration="0:0:0:0.5"></ThicknessAnimation>
-        </Storyboard>
-        <Storyboard x:Key="MoveUpLogo">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0,10,0,0" AccelerationRatio="0.5" DecelerationRatio="0.5" Duration="0:0:0:0.2"></ThicknessAnimation>
-        </Storyboard>
         <Storyboard x:Key="OpacityUp">
             <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0:0.1"></DoubleAnimation>
         </Storyboard>
-        <Storyboard x:Key="OpacityDown">
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0:0.1"></DoubleAnimation>
-        </Storyboard>
-
     </Page.Resources>
     <Grid>
 
@@ -37,25 +27,14 @@
         <Grid>
             
         </Grid>-->
-        <Grid x:Name="SearchBarGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" x:Name="LeftColumn"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="1*" x:Name="RightColumn" />
-            </Grid.ColumnDefinitions>
-            <TextBlock x:Name="Logo" Text="FUTURE CONTENT" Foreground="White" Grid.Column="1" HorizontalAlignment="Center" Margin="0,200,0,0" FontSize="75" />
-            <TextBox x:Name="TextBox" Background="White" MinWidth="30" Margin="0,375,0,0" BorderThickness="0" VerticalAlignment="Top" FontSize="16" Text="Search" Height="27" GotFocus="TextBox_GotFocus" Grid.Column="1" />
-        </Grid>
-        <Grid>
-            <ScrollViewer x:Name="MainScrollViewer" Margin="15,45,15,10" VerticalScrollBarVisibility="Visible" Visibility="Hidden">
-                <ScrollViewer.Resources>
-                    <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource DarkerScrollBar}" ></Style>
-                </ScrollViewer.Resources>
-                <StackPanel x:Name="panel">
+        <ScrollViewer x:Name="MainScrollViewer" VerticalScrollBarVisibility="Visible" Loaded="MainScrollViewer_Loaded">
+            <ScrollViewer.Resources>
+                <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource DarkerScrollBar}" ></Style>
+            </ScrollViewer.Resources>
+            <StackPanel x:Name="panel">
 
-                </StackPanel>
-            </ScrollViewer>
-            
-        </Grid>
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
 </Page>

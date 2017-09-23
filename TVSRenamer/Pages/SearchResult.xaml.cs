@@ -106,5 +106,13 @@ namespace TVSRenamer {
             Storyboard close = FindResource("CloseDetails") as Storyboard;           
             close.Begin(MainPart);
         }
+
+        private void showName_MouseEnter(object sender, MouseEventArgs e) {
+            showName.Cursor = Cursors.Hand;
+        }
+
+        private void showName_MouseLeave(object sender, MouseEventArgs e) {
+            showName.Cursor = Cursors.Arrow;
+        }
     }
 }
