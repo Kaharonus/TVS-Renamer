@@ -40,19 +40,34 @@ namespace TVSRenamer {
             open.Completed += (se, ev) => { DetailsGrid.Visibility = Visibility.Visible; };
             open.Begin(MainPart);
         }
+
+        private void ShowWeb(object sender, MouseEventArgs e) {
+            Process.Start("http://www.imdb.com/title/" + show.externals.imdb + "/?ref_=nv_sr_1");
+        }
+
+        private void ShowOfficialSite(object sender, MouseEventArgs e) {
+            Process.Start(show.officialSite);
+        }
+
         private void FillInInfo() {
             Dispatcher.Invoke(new Action(() => {
                 showName.Text = show.name;
-                showName.MouseLeftButtonUp -= (s, e) => { Process.Start("http://www.imdb.com/title/" + show.externals.imdb + "/?ref_=nv_sr_1"); };
-                showName.MouseLeftButtonUp += (s, e) => { Process.Start("http://www.imdb.com/title/"+show.externals.imdb+"/?ref_=nv_sr_1"); };
-                network.Text = show.network.name;
-                timezone.Text = show.network.country.timezone.Replace('_', ' ');
+                showName.MouseLeftButtonUp -= ShowWeb;
+                showName.MouseLeftButtonUp += ShowWeb;
+                if (show.network != null) {
+                    network.Text = show.network.name;
+                    timezone.Text = show.network.country.timezone.Replace('_', ' ');
+
+                } else {
+                    network.Text = "-";
+                    timezone.Text = "-";
+                }
                 stat.Text = show.status;
                 len.Text = show.runtime + " minutes";
                 lang.Text = show.language;
                 type.Text = show.type;
-                offsite.MouseLeftButtonUp -= (s, e) => { Process.Start(show.officialSite); };
-                offsite.MouseLeftButtonUp += (s, e) => { Process.Start(show.officialSite); };
+                offsite.MouseLeftButtonUp -= ShowOfficialSite;
+                offsite.MouseLeftButtonUp += ShowOfficialSite;
                 rating.Text = show.rating.average + "/10";
                 if (show.genres != null) {
                     string genre = null;
@@ -82,8 +97,13 @@ namespace TVSRenamer {
                     prem.Text = DateTime.ParseExact(show.premiered, "yyyy-MM-dd",CultureInfo.InvariantCulture,DateTimeStyles.None).ToString("dd.MM.yyyy");
                 }
                 summary.Text = RemoveStyle(show.summary);
-                BitmapImage image = new BitmapImage(new Uri(show.image.original));
-                Poster.Source = image;
+                if (show.image != null) {
+                    BitmapImage image = new BitmapImage(new Uri(show.image.original));
+                    Poster.Source = image;
+                } else {
+                    Poster.Source = new BitmapImage(new Uri("pack://application:,,,/TVSRenamer;component/Icons/nope.png"));
+                }
+
             }), DispatcherPriority.Send);
         }
         private string RemoveStyle(string line) {
